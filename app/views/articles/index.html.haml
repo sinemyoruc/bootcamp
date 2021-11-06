@@ -1,0 +1,8 @@
+%h1 Articles
+%ul
+  - @articles.each do |article|
+    %li
+      -# link ekleme
+      %a{href: "/articles/#{article.id}"}
+        = article.title
+=link_to "Create New Article", new_article_path
