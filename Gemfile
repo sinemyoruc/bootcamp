@@ -53,3 +53,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml', '~> 5.2', '>= 5.2.2'
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
+gem 'webpacker', '~> 5.0'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
+gem 'devise'

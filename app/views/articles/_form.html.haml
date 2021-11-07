@@ -1,15 +1,23 @@
 =form_with model: @article do |form|
   %div
-    =form.label :title
+    =form.label :title, class: 'form-label'
     %br
-    =form.text_field :title
+    =form.text_field :title, class: 'form-control'
     - @article.errors.full_messages_for(:title).each do |error|
       %p= error
+
   %div
-    =form.label :body
+    =form.label :body, class: 'form-label'
     %br
-    =form.text_field :body
+    =form.text_area :body, class: 'form-control'
+
     - @article.errors.full_messages_for(:body).each do |error|
       %p= error
   %div
-    =form.submit
+    =form.label :image, class: 'form-label'
+    %br
+    =form.file_field :image, class: 'form-control'
+
+  %div.mt-5.d-flex.justify-content-between
+    =link_to "Back", root_path
+    =form.submit "Create Article", class: "btn btn-outline-success"

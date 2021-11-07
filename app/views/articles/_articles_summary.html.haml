@@ -1,0 +1,13 @@
+%div.article-container.mt-5
+  %h2.header
+    =link_to article.title, article
+
+  - if article.image.present?
+    =image_tag(article.image, class: "article-summary-image")
+
+  %div.body
+    =article.body.truncate(500, seperator: "...")
+    -# ruby kodu - olunca sadece okuyor, = olunca okuyup yazdırıyor
+    - if article.body.size > 500
+      =link_to "Read More", article
+%hr

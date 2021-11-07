@@ -1,10 +1,20 @@
 %h2= @article.title
+- if @article.image.present?
+  =image_tag(@article.image)
 %p= @article.body
+%br
 
--# edit sayfasına yönlendirme
-=link_to "Edit Article", edit_article_path
+%p= @article.likes.count.to_s + " Likes"
+- if current_user.present?
+  - if @article.likes.where(user_id: current_user.id).present?
+    =link_to " Unlike", like_path(id: @article.id)
+  - else
+    =link_to " Like", like_path(id: @article.id)
 
-=link_to "Delete Article", article_path(@article), method: "delete", data: { confirm: "Are you sure?" }
+- if current_user.present?
+  =link_to "Edit Article", edit_article_path
+  =link_to "Delete Article", article_path(@article), method: "delete", data: { confirm: "Are you sure?" }
 
--# anasayfaya yönlendirme
 =link_to "Back", root_path
+=render "comments/form"
+=render "comments/comments"
