@@ -1,6 +1,11 @@
+- if current_user.present?
+  %div.buttons.float-end
+    =link_to "Edit Article", edit_article_path, class: 'btn btn-warning'
+    =link_to "Delete Article", article_path(@article), method: "delete", class: 'btn btn-danger', data: { confirm: "Are you sure?" }
+
 %h2= @article.title
 - if @article.image.present?
-  =image_tag(@article.image)
+  =image_tag(@article.image, class: 'article-image')
 %p= @article.body
 %br
 
@@ -11,9 +16,6 @@
   - else
     =link_to " Like", like_path(id: @article.id)
 
-- if current_user.present?
-  =link_to "Edit Article", edit_article_path
-  =link_to "Delete Article", article_path(@article), method: "delete", data: { confirm: "Are you sure?" }
 
 =link_to "Back", root_path
 =render "comments/form"

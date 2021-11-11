@@ -1,10 +1,8 @@
 %h2 Comments
 - @article.comments.each do |comment|
-  %p
-    %strong Commenter:
-    =comment.commenter
-  %p
-    %strong Comment:
-    =comment.body
-    - if current_user.present?
-      =link_to "Delete Comment", [comment.article, comment], method: "delete", data: { confirm: "Are you sure?" }
+  .comment.box.d-flex
+    %strong=comment.commenter.to_s + ": "
+    %p.ms-2=comment.body
+  - if current_user.present?
+    =link_to "Delete Comment", [comment.article, comment], method: "delete", data: { confirm: "Are you sure?" }
+    %hr
